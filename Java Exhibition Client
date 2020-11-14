@@ -1,0 +1,59 @@
+package application;
+	
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+
+
+public class Main extends Application {
+	@Override
+	public void start(Stage primaryStage) {
+		try {
+			Label text = new Label();
+			text.setText("우끼끼끼끼끼");
+			text.setStyle("-fx-font-size: 30; -fx-text-fill: red; -fx-background-color: yellow; -fx-border-color: black");
+			root.setAlignment(Pos.TOP_CENTER);
+			
+			Label IName = new Label("Username: ");
+			Label IPassword = new Label("Password: ");
+			TextField tfName = new TextField();
+			PasswordField tfPassword = new PasswordField();
+			GridPane grid = new GridPane();
+			grid.addRow(0, IName, tfName);
+			grid.addRow(1, IPassword, tfPassword);
+			grid.setAlignment(Pos.CENTER);
+			
+			
+			Button button = new Button();
+			button.setText("login");
+			button.setStyle("-fx-font-size: 15");
+			root.setAlignment(button, Pos.BOTTOM_CENTER);
+			button.setOnAction(e->{
+				//버튼 누르면 로그인 되는거 해야됨
+			});
+			
+			
+			root.getChildren().addAll(text, grid, button);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	StackPane root = new StackPane();
+	Scene scene = new Scene(root,600,800);
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+}
